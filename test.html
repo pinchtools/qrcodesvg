@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="raphael-2.1.0-min.js"></script>
+		 <script type="text/javascript" src="qrcodesvg.js"></script>
+		 <!--<script type="text/javascript" src="qrcodesvg-min.js"></script>-->
+		<script type="text/javascript">
+			function generate() {
+				document.getElementById("qrcode").innerHTML = "";
+				
+				var qrcodesvg	= null;
+				var qrtest		= document.getElementById("qrtest").value;
+				var input		= document.getElementById("qrinput").value;
+				var size		= 250;
+				var ecclevel	= 1;
+				
+				switch(parseInt(qrtest))
+				{
+				case 0: //classic
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.draw();
+				  break;
+				case 1: //ecclevel 4
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : 4});
+					
+					qrcodesvg.draw();
+				  break;
+				case 2: //size 100
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", 100, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.draw();
+				  break;
+				case 3: //round
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.draw({"method":"round", "radius" : 8});
+				  break;
+				case 4: //bevel
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.draw({"method":"bevel", "radius" : 5});
+				  break;
+				case 5: //mitered square
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+				
+					qrcodesvg.draw({"method":"bevel", "radius" : 4, "scope":"square"});
+					break;
+				case 6: //colored pattern
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.draw({"method":"classic", "fill-colors":["#C40101","#25C401","#0125C4"]}, {"stroke-width":1});
+				  break;
+				case 7: //colored square
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.draw({"method":"classic", "fill-colors":["#000","#A5831D","#990422"], "fill-colors-scope":"square"}, {"stroke-width":0});
+				  break;
+				case 8: //background
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.setBackground(null, {"fill":"135-#FFF-#0200AF", "stroke-width":1, "stroke":"#FFF"});
+					
+					qrcodesvg.draw();
+				  break;
+				case 9: //frame
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					
+					qrcodesvg.setBackground({"padding" : 20, "margin" : 10}, {"fill":"r(0.25, 0.75)#fff-#000", "stroke-width" : 40, "stroke" : "#FF0000"});
+
+					qrcodesvg.draw();
+				  break;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<select id="qrtest">
+			<option value="0">Classic</option>
+			<option value="1">Ecc level 4</option>
+			<option value="2">size 100</option>
+			<option value="3">Round</option>
+			<option value="4">Bevel</option>
+			<option value="5">Mitered Squares</option>
+			<option value="6">Colored Patterns</option>
+			<option value="7">Colored Squares</option>
+			<option value="8">Background</option>
+			<option value="9">Frame</option>
+		</select>
+		<textarea id="qrinput" size="2953">Hello World!</textarea>
+		<input type="button" value="Go SVG GO" onclick="generate()"/>
+		<div id="qrcode" ></div>
+	</body>
+</html>
