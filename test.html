@@ -17,7 +17,7 @@
 				switch(parseInt(qrtest))
 				{
 				case 0: //classic
-					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
+					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size);
 					
 					qrcodesvg.draw();
 				  break;
@@ -41,7 +41,7 @@
 					
 					qrcodesvg.draw({"method":"bevel", "radius" : 5});
 				  break;
-				case 5: //mitered square
+				case 5: //bevel square
 					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
 				
 					qrcodesvg.draw({"method":"bevel", "radius" : 4, "scope":"square"});
@@ -49,24 +49,24 @@
 				case 6: //colored pattern
 					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
 					
-					qrcodesvg.draw({"method":"classic", "fill-colors":["#C40101","#25C401","#0125C4"]}, {"stroke-width":1});
+					qrcodesvg.draw({"method":"classic", "fill-colors":["#1C46ED","#021872","#0125C4"]}, {"stroke-width":1});
 				  break;
 				case 7: //colored square
 					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
 					
-					qrcodesvg.draw({"method":"classic", "fill-colors":["#000","#A5831D","#990422"], "fill-colors-scope":"square"}, {"stroke-width":0});
+					qrcodesvg.draw({"method":"classic", "fill-colors":["#000000","#2D2D2D"], "fill-colors-scope":"square"}, {"stroke-width":0});
 				  break;
 				case 8: //background
 					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
 					
-					qrcodesvg.setBackground(null, {"fill":"135-#FFF-#0200AF", "stroke-width":1, "stroke":"#FFF"});
+					qrcodesvg.setBackground(null, {"fill":"90-#FFF-#CECECE", "stroke-width":1, "stroke":"#FFF"});
 					
 					qrcodesvg.draw();
 				  break;
 				case 9: //frame
 					var qrcodesvg 	= new Qrcodesvg( input, "qrcode", size, {"ecclevel" : ecclevel});
 					
-					qrcodesvg.setBackground({"padding" : 20, "margin" : 10}, {"fill":"r(0.25, 0.75)#fff-#000", "stroke-width" : 40, "stroke" : "#FF0000"});
+					qrcodesvg.setBackground({"padding" : 10, "margin" : 10}, {"stroke-width" : 20, "stroke" : "#3DBC27"});
 
 					qrcodesvg.draw();
 				  break;
@@ -88,7 +88,13 @@
 			<option value="9">Frame</option>
 		</select>
 		<textarea id="qrinput" size="2953">Hello World!</textarea>
-		<input type="button" value="Go SVG GO" onclick="generate()"/>
+		<input type="button" value="Submit" onclick="generate()"/>
 		<div id="qrcode" ></div>
+		
+		<script type="text/javascript">
+			var qrcodesvg 	= new Qrcodesvg( "Hello World!", "qrcode", 250);
+			
+			qrcodesvg.draw();
+		</script>
 	</body>
 </html>
