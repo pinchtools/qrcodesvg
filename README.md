@@ -62,8 +62,8 @@ Add a background and a frame.
 	<script type="text/javascript">
 			var qrcodesvg 	= new Qrcodesvg( "Testing Qrcodesvg", "qrcode", 250, {"ecclevel" : 1});
 
-			//add a bevel effect on pattern with a radius of 5.
-			//apply on of these three colors to patterns
+			//add a bevel effect on patterns with a radius of 5.
+			//apply one of these three colors to patterns
 			qrcodesvg.draw({"method":"bevel", "radius" : 5, "fill-colors":["#1C46ED","#021872","#0125C4"]}, {"stroke-width":1});
    	</script>
   </body>
